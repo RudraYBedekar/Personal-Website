@@ -21,7 +21,7 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      value: 'rudra.bedekar01@gmail.com',
+      value: 'rudra.bedekar03@gmail.com',
       link: 'mailto:rudra.bedekar01@gmail.com'
     },
     {

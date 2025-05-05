@@ -41,7 +41,7 @@ const About = () => {
               <div className="relative">
                 <div className="absolute inset-0 rounded-lg transform translate-x-4 translate-y-4 bg-teal-600"></div>
                 <img 
-                  src="" 
+                  src="image/Rudra.jpg" 
                   alt="Professional portrait" 
                   className="relative z-10 w-full h-full object-cover rounded-lg shadow-lg"
                 />
@@ -84,7 +84,7 @@ const About = () => {
               </div>
               
               <a 
-  href="https://drive.google.com/uc?export=download&id=1S8Tw32UHe93k9MUnzHqRnAZgb0mlrGqe" 
+  href="https://drive.google.com/file/d/1LigA5J-2Q0t9qdIDg1e_OXVvHGm--peh/view?usp=drive_link" 
   className="px-8 py-3 rounded-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-colors duration-300 inline-block"
   target="_blank"
   rel="noopener noreferrer"
