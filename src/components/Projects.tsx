@@ -13,7 +13,7 @@ const Projects = () => {
       image: 'https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800',
       tags: ['Python', 'SQL', 'Airflow', 'PostgreSQL', 'Tableau'],
       demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/Inventory_Management'
+      repoLink: 'https://github.com/RudraYBedekar/ETL-Manufacturing'
     }
     ,
     {
