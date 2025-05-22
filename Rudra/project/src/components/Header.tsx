@@ -34,7 +34,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center">
           <a href="#home" className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            <span className="text-teal-600 dark:text-teal-400">Port</span>folio
+            <span className="text-teal-600 dark:text-teal-400">Rudra</span> Bedekar
           </a>
 
           {/* Desktop Navigation */}

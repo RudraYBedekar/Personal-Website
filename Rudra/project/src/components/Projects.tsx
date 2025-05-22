@@ -42,7 +42,16 @@ const Projects = () => {
       demoLink: '#',
       repoLink: 'https://github.com/RudraYBedekar/NTLK-REVIEW'
     }
-    
+    ,
+    {
+      title: 'AVTrajectoryAnalysis: Autonomous Vehicle Behavior Clustering',
+     description: 'An AV trajectory analysis and behavior clustering tool using Python and simulated/real vehicle data. It extracts kinematic features like speed and turning radius, applies clustering, and visualizes trajectory behaviors. Built for exploratory analysis of autonomous driving behavior using the Waymo Open Dataset structure.',
+      image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800', // Replace with a hosted project image if you have one
+       tags: ['Python', 'Pandas', 'Clustering', 'Matplotlib', 'Waymo', 'AV'],
+      demoLink: '#',
+      repoLink: 'https://github.com/RudraYBedekar/AVTrajectoryAnalysis'
+    }
+
   ];
 
   return (
