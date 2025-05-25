@@ -106,7 +106,7 @@ const About = () => {
             </div>
 
             <a
-              href="https://drive.google.com/file/d/1LigA5J-2Q0t9qdIDg1e_OXVvHGm--peh/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1vcYqGKCSDc1y8DxbTn9FBLqt7bXQFeZW/view?usp=drive_link"
               className="px-8 py-3 rounded-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-colors duration-300 inline-block"
               target="_blank"
               rel="noopener noreferrer"
