@@ -7,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  
   const isInView = useInView(sectionRef, { threshold: 0.1 });
 
   const [state, handleSubmit] = useForm("manozpjq");
