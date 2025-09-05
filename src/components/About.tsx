@@ -7,12 +7,54 @@ const About = () => {
 
   const experienceItems = [
     {
-      year: '2024',
-      title: 'Research Analyst',
+      year: 'Aug 2024 – May 2025',
+      title: 'Data Analyst Intern (Academic)',
       company: 'George Mason University',
-      description:
-        'Analyzed survey data from 1,200+ Pittsburgh pedestrians and cyclists, optimized SQL queries reducing processing time by 40%, and maintained 99% data integrity in deliverables.',
+      location: 'Fairfax, Virginia',
+      description: [
+        'Designed and optimized ETL pipelines using SQL, Python, AWS Glue, and S3 to process over 5,000 survey records, improving processing efficiency and reducing runtime by 40%.',
+        'Developed predictive models using regression and chi-squared tests to uncover adoption trends, leading to actionable insights presented through Tableau dashboards.',
+        'Created and maintained dashboards for 20+ faculty members, enabling data-driven decisions and improving departmental research outcomes.',
+        'Implemented automated data quality checks, ensuring 99% data integrity in survey datasets, leading to more reliable research findings.'
+      ]
     },
+    {
+      year: 'Dec 2023 – May 2024',
+      title: 'Website Developer Intern',
+      company: 'GFX Bandits IT Solution LLP',
+      location: 'Mumbai, India',
+      description: [
+        'Analyzed over 10,000 website traffic sessions using Python, delivering actionable insights that improved client retention by 30%.',
+        'Developed interactive Excel and Power BI dashboards, reducing reporting delays by 25% and enhancing real-time decision-making for clients.',
+        'Refined SQL queries and automated database tasks using Python, optimizing schema design and boosting query performance by 15%.',
+        'Collaborated with cross-functional teams to ensure dashboard alignment with business needs, resulting in a 20% increase in project delivery speed.'
+      ]
+    },
+    {
+      year: 'Aug 2022 – May 2023',
+      title: 'Undergraduate Project Assistant – Face Recognition',
+      company: 'Ramrao Adik Institute of Technology',
+      location: 'Mumbai, India',
+      description: [
+        'Developed a Python/OpenCV pipeline to process over 5,000 face images, achieving 92% recognition accuracy and reducing training time by 18%.',
+        'Utilized machine learning algorithms and fine-tuned model parameters to optimize facial recognition accuracy, enhancing overall system reliability.',
+        'Presented project outcomes through interactive dashboards and reports, making technical insights accessible to non-technical stakeholders.',
+        'Conducted performance analysis to identify bottlenecks, leading to a 10% improvement in processing time for large image datasets.'
+      ]
+    },
+    {
+      year: 'May 2019 – July 2019',
+      title: 'Trainee Engineer',
+      company: 'Shavison Electronics Pvt. Ltd.',
+      location: 'Mumbai, India',
+      description: [
+        'Monitored **PCB assembly production** data, including throughput and defect rates, and performed root-cause analysis on production processes to improve yield by **8%** through process adjustments.',
+        'Worked with **hardware** to perform testing and troubleshooting on **PCBs** and embedded systems, ensuring quality standards were met before assembly.',
+        'Automated **manufacturing KPI reports** using **Excel and SQL**, cutting manual effort by **20%** and enabling faster quality-control decisions, optimizing workflow and enhancing productivity.',
+        'Leveraged **software** tools to develop and maintain data collection systems that integrated **SQL** databases with reporting dashboards, ensuring real-time data availability for decision-making.',
+        'Collaborated with the hardware team to ensure seamless **data transfer** from embedded systems to software solutions for better analysis and monitoring.'
+      ]
+    }
   ];
 
   return (
@@ -21,20 +63,6 @@ const About = () => {
       ref={sectionRef}
       className="relative py-20 bg-white dark:bg-gray-800 overflow-hidden"
     >
-      {/* Animated Background */}
-      <div className="absolute left-0 top-0 w-1/2 h-full z-0 pointer-events-none">
-        <svg
-          viewBox="0 0 200 200"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full opacity-10 animate-pulse fill-teal-400"
-        >
-          <path
-            fill="currentColor"
-            d="M38.5,-64.3C49.7,-58.7,59.5,-49.6,65.6,-38.5C71.6,-27.3,73.9,-13.7,73.3,-0.3C72.7,13.1,69.2,26.2,62.5,38.4C55.9,50.6,46.1,61.9,34.3,66.5C22.5,71.1,8.8,69,-4.5,71.7C-17.9,74.4,-35.8,81.9,-43.6,75.6C-51.3,69.2,-49,49.1,-56.3,34.8C-63.5,20.5,-80.4,12,-84.6,0.3C-88.8,-11.4,-80.3,-25.5,-71.6,-38.8C-63,-52.1,-54.1,-64.6,-42.5,-71.1C-30.9,-77.5,-15.4,-77.9,-1.1,-76.2C13.2,-74.5,26.4,-70,38.5,-64.3Z"
-          />
-        </svg>
-      </div>
-
       <div className="relative container mx-auto px-4 z-10">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
@@ -48,74 +76,9 @@ const About = () => {
             >
               About <span className="text-teal-600 dark:text-teal-400">Me</span>
             </h2>
-            <div
-              className={`w-20 h-1 bg-teal-600 mx-auto rounded transition-all duration-700 delay-200 ${
-                isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-              }`}
-            ></div>
           </div>
 
-          {/* About Content */}
-          <div
-            className={`transition-all duration-1000 max-w-3xl mx-auto text-center md:text-left ${
-              isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'
-            }`}
-          >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-              Data Analyst & Full Stack Developer
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              I'm a passionate data analyst and developer pursuing my Master's in
-              Information Systems at George Mason University. With expertise in
-              Python, SQL, and data visualization, I specialize in transforming
-              complex data into actionable insights.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              My approach combines analytical thinking with technical expertise
-              to deliver data-driven solutions that drive business value. I'm
-              constantly exploring new technologies and methodologies to enhance
-              my analytical and development capabilities.
-            </p>
-
-            {/* Info */}
-            <div className="grid grid-cols-2 gap-6 mb-6">
-              <div>
-                <p className="font-medium text-gray-900 dark:text-white">Name:</p>
-                <p className="text-gray-700 dark:text-gray-300">Rudra Bedekar</p>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 dark:text-white">Email:</p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  rudra.bedekar03@gmail.com
-                </p>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 dark:text-white">
-                  Location:
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">Fairfax, VA</p>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 dark:text-white">
-                  Education:
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  MS Information Systems
-                </p>
-              </div>
-            </div>
-
-            <a
-              href="https://drive.google.com/file/d/1RcaheXkdVgH0-AgOgNiWYRslt24HVKGN/view?usp=sharing"
-              className="px-8 py-3 rounded-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-colors duration-300 inline-block"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download Resume
-            </a>
-          </div>
-
-          {/* Experience */}
+          {/* Experience Section */}
           <div className="mt-24">
             <h3
               className={`text-2xl font-bold text-center text-gray-900 dark:text-white mb-12 transition-all duration-700 ${
@@ -127,53 +90,46 @@ const About = () => {
               Experience
             </h3>
 
-            <div className="relative">
-              {/* Vertical line */}
-              <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 h-full w-px bg-gray-300 dark:bg-gray-600"></div>
+            <div className="space-y-12">
+              {experienceItems.map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex flex-col sm:flex-row sm:items-center transition-all duration-700 delay-${index * 200} ${
+                    isInView
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-10'
+                  }`}
+                >
+                  {/* Year before title */}
+                  <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-8">
+                    <p className="text-teal-600 font-medium">{item.year}</p>
+                  </div>
 
-              {/* Timeline items */}
-              <div className="space-y-12">
-                {experienceItems.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`relative flex flex-col md:flex-row md:items-center transition-all duration-700 delay-${
-                      index * 200
-                    } ${
-                      isInView
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-10'
-                    }`}
-                  >
-                    {/* Year bubble */}
-                    <div className="mb-4 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10">
-                      <div className="w-16 h-16 rounded-full bg-teal-600 flex items-center justify-center text-white font-medium shadow-lg">
-                        {item.year}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div
-                      className={`md:w-1/2 ${
-                        index % 2 === 0
-                          ? 'md:pr-12 md:text-right'
-                          : 'md:pl-12 md:ml-auto'
-                      }`}
-                    >
-                      <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                        <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-1">
+                  {/* Content */}
+                  <div className="flex-grow">
+                    <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                      {/* Title and Company */}
+                      <div className="mb-4">
+                        <p className="font-bold text-xl text-gray-900 dark:text-white">
                           {item.title}
-                        </h4>
-                        <p className="text-teal-600 dark:text-teal-400 font-medium mb-3">
-                          {item.company}
                         </p>
-                        <p className="text-gray-700 dark:text-gray-300">
-                          {item.description}
+                        <p className="text-teal-600 dark:text-teal-400 font-medium mb-1">
+                          {item.company} | {item.location}
                         </p>
                       </div>
+
+                      {/* Description List */}
+                      <ul className="text-gray-700 dark:text-gray-300">
+                        {item.description.map((desc, idx) => (
+                          <li key={idx} className="mb-2">
+                            {desc}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
