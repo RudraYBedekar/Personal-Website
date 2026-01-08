@@ -1,8 +1,10 @@
 import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
+import Chatbot from './components/Chatbot';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Recommendations from './components/Recommendations';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -14,11 +16,13 @@ function App() {
     <ThemeProvider>
       <div className="relative overflow-hidden">
         <CustomCursor />
+        <Chatbot />
         <Header />
         <main className="relative">
           <Hero />
           <About />
           <Projects />
+          <Recommendations />
           <Skills />
           <Contact />
         </main>

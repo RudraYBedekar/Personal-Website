@@ -1,63 +1,22 @@
 import { useRef, useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { projects } from '../data/portfolioData';
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demoLink: string;
+  repoLink: string;
+}
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { threshold: 0.1 });
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
-
-  const projects = [
-    {
-      title: 'Warehouse Data Pipeline & Analytics System',
-      description: 'An end-to-end data pipeline for warehouse inventory, featuring ETL automation, schema modeling, and interactive KPI dashboards for real-time decision-making.',
-      image: 'https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Python', 'SQL', 'Airflow', 'PostgreSQL', 'Tableau'],
-      demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/ETL-Manufacturing'
-    },
-    {
-      title: 'Anti-Theft Vehicle Detection with Obstacle Detection',
-      description: 'Face recognition-based vehicle ignition system using Raspberry Pi, with real-time alerts, buzzer alarm, and GPS tracking to prevent unauthorized access.',
-      image: 'https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Python', 'OpenCV', 'Raspberry Pi', 'Face Recognition', 'IoT'],
-      demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/ANTI-THEFT-VEHICLE-DETECTION-WITH-OBSTACLE-DETECTION'
-    },
-    {
-      title: 'OptiSupply – AI-Powered Supply Chain Dashboard',
-      description: '**SmartSupplyChainAI** is a modular, AI-driven supply chain analytics dashboard built with Streamlit. It helps logistics teams optimize warehouse locations, forecast demand, detect delivery anomalies, and plan optimized delivery routes using real-world APIs and geospatial data.',
-      image: 'https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ["Python", "Streamlit", "AI", "Geospatial", "Logistics"],
-      demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/SmartSupplyChainAI'
-    },
-    {
-      title: 'IoT-Based Health Patient Monitoring System',
-      description: 'A real-time health tracking system using Arduino and IoT sensors to monitor vitals like heart rate and temperature, with wireless alerts for anomalies.',
-      image: 'https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Arduino', 'IoT', 'ESP8266', 'DHT11', 'Healthcare'],
-      demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/IoT-based-Health-Patient-Monitoring-System'
-    },
-    {
-      title: 'NTLK-Review: Sentiment Dashboard with PySpark',
-      description: 'A sentiment analysis dashboard built using PySpark and NLTK, visualizing product reviews and identifying anomalies over time with CSV-based data processing.',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['PySpark', 'NLTK', 'Sentiment Analysis', 'Data Visualization', 'CSV'],
-      demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/NTLK-REVIEW'
-    },
-    {
-      title: 'AVTrajectoryAnalysis: Autonomous Vehicle Behavior Clustering',
-      description: 'An AV trajectory analysis and behavior clustering tool using Python and simulated/real vehicle data. It extracts kinematic features like speed and turning radius, applies clustering, and visualizes trajectory behaviors. Built for exploratory analysis of autonomous driving behavior using the Waymo Open Dataset structure.',
-      image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Python', 'Pandas', 'Clustering', 'Matplotlib', 'Waymo', 'AV'],
-      demoLink: '#',
-      repoLink: 'https://github.com/RudraYBedekar/AVTrajectoryAnalysis'
-    }
-  ];
 
   return (
     <section
@@ -77,7 +36,7 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(showAll ? projects : projects.slice(0, 3)).map((project, index) => (
+          {(showAll ? projects : projects.slice(0, 3)).map((project: Project, index: number) => (
             <div
               key={index}
               className={`cursor-pointer project-card group relative overflow-hidden rounded-xl shadow-xl transition-all duration-1000 delay-${index * 150} ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
@@ -111,7 +70,7 @@ const Projects = () => {
                 )}
 
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {project.tags.map((tag, tagIndex) => (
+                  {project.tags.map((tag: string, tagIndex: number) => (
                     <span
                       key={tagIndex}
                       className="px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-xs font-medium rounded-full"
