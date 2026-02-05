@@ -18,10 +18,10 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-20 bg-white dark:bg-gray-800 overflow-hidden"
+      className="relative py-20 overflow-hidden"
     >
       <div className="relative container mx-auto px-4 z-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-12 text-center">
             <h2
@@ -61,19 +61,19 @@ const About = () => {
 
                   {/* Content */}
                   <div className="flex-grow">
-                    <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-lg shadow-xl hover:bg-white/10 transition-colors">
                       {/* Title and Company */}
                       <div className="mb-4">
-                        <p className="font-bold text-xl text-gray-900 dark:text-white">
+                        <p className="font-bold text-xl text-white">
                           {item.title}
                         </p>
-                        <p className="text-teal-600 dark:text-teal-400 font-medium mb-1">
+                        <p className="text-teal-400 font-medium mb-1">
                           {item.company} | {item.location}
                         </p>
                       </div>
 
                       {/* Description List */}
-                      <ul className="text-gray-700 dark:text-gray-300">
+                      <ul className="text-gray-300">
                         {item.description.map((desc: string, idx: number) => (
                           <li key={idx} className="mb-2">
                             {desc}

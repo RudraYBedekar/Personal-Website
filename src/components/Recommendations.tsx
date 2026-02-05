@@ -55,22 +55,22 @@ const Recommendations = () => {
         <section
             id="recommendations"
             ref={sectionRef}
-            className="py-20 bg-white dark:bg-gray-800 overflow-hidden"
+            className="py-20 overflow-hidden"
         >
             <div className="container mx-auto px-4">
                 <div className="mb-16 text-center">
-                    <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <span className="text-teal-600 dark:text-teal-400">Recommendations</span>
+                    <h2 className={`text-3xl md:text-4xl font-bold text-white mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <span className="text-teal-400">Recommendations</span>
                     </h2>
                     <div className={`w-20 h-1 bg-teal-600 mx-auto rounded transition-all duration-700 delay-200 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}></div>
-                    <p className={`mt-6 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <p className={`mt-6 text-gray-300 max-w-3xl mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         Words from my professors and mentors regarding my academic and professional performance.
                     </p>
                 </div>
 
-                <div className={`relative max-w-5xl mx-auto transition-all duration-1000 delay-400 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className={`relative max-w-7xl mx-auto transition-all duration-1000 delay-400 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                     {/* Quote Icon */}
-                    <div className="absolute top-0 left-0 -mt-8 -ml-8 text-teal-100 dark:text-gray-700 transform -scale-x-100 z-0">
+                    <div className="absolute top-0 left-0 -mt-8 -ml-8 text-white/5 transform -scale-x-100 z-0">
                         <Quote size={120} />
                     </div>
 
@@ -78,13 +78,13 @@ const Recommendations = () => {
                         {/* Previous Arrow */}
                         <button
                             onClick={prevRecommendation}
-                            className="hidden md:flex p-2 rounded-full bg-white dark:bg-gray-700 shadow-lg text-teal-600 dark:text-teal-400 hover:scale-110 transition-transform z-20 -ml-4"
+                            className="hidden md:flex p-2 rounded-full bg-white/10 text-teal-400 hover:scale-110 hover:bg-white/20 transition-all z-20 -ml-4 backdrop-blur-sm"
                             aria-label="Previous recommendation"
                         >
                             <ChevronLeft size={24} />
                         </button>
 
-                        <div className="flex-grow bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-xl p-8 md:p-12 mx-0 md:mx-4">
+                        <div className="flex-grow bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-8 md:p-12 mx-0 md:mx-4">
                             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                                 <div className="flex-shrink-0">
                                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-teal-500 shadow-md">
@@ -97,20 +97,20 @@ const Recommendations = () => {
                                 </div>
 
                                 <div className="flex-grow text-center md:text-left">
-                                    <p className="text-gray-700 dark:text-gray-300 italic text-lg leading-relaxed mb-6">
+                                    <p className="text-gray-200 italic text-lg leading-relaxed mb-6">
                                         "{recommendations[activeIndex].text}"
                                     </p>
                                     <div>
-                                        <h4 className="text-xl font-bold text-gray-900 dark:text-white">
+                                        <h4 className="text-xl font-bold text-white">
                                             {recommendations[activeIndex].name}
                                         </h4>
-                                        <p className="text-teal-600 dark:text-teal-400 font-medium">
+                                        <p className="text-teal-400 font-medium">
                                             {recommendations[activeIndex].title}
                                         </p>
-                                        <p className="text-gray-500 dark:text-gray-400 text-sm">
+                                        <p className="text-gray-400 text-sm">
                                             {recommendations[activeIndex].department}
                                         </p>
-                                        <p className="text-gray-500 dark:text-gray-400 text-sm">
+                                        <p className="text-gray-400 text-sm">
                                             {recommendations[activeIndex].institution}
                                         </p>
                                     </div>
@@ -121,7 +121,7 @@ const Recommendations = () => {
                         {/* Next Arrow */}
                         <button
                             onClick={nextRecommendation}
-                            className="hidden md:flex p-2 rounded-full bg-white dark:bg-gray-700 shadow-lg text-teal-600 dark:text-teal-400 hover:scale-110 transition-transform z-20 -mr-4"
+                            className="hidden md:flex p-2 rounded-full bg-white/10 text-teal-400 hover:scale-110 hover:bg-white/20 transition-all z-20 -mr-4 backdrop-blur-sm"
                             aria-label="Next recommendation"
                         >
                             <ChevronRight size={24} />
@@ -131,8 +131,8 @@ const Recommendations = () => {
                     {/* Navigation Dots (and mobile arrows) */}
                     <div className="flex flex-col items-center mt-8 gap-4">
                         <div className="flex md:hidden gap-8">
-                            <button onClick={prevRecommendation} className="p-2 rounded-full bg-gray-200 dark:bg-gray-600"><ChevronLeft size={20} /></button>
-                            <button onClick={nextRecommendation} className="p-2 rounded-full bg-gray-200 dark:bg-gray-600"><ChevronRight size={20} /></button>
+                            <button onClick={prevRecommendation} className="p-2 rounded-full bg-white/10 text-white"><ChevronLeft size={20} /></button>
+                            <button onClick={nextRecommendation} className="p-2 rounded-full bg-white/10 text-white"><ChevronRight size={20} /></button>
                         </div>
 
                         <div className="flex justify-center gap-3">
@@ -141,8 +141,8 @@ const Recommendations = () => {
                                     key={index}
                                     onClick={() => setActiveIndex(index)}
                                     className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeIndex
-                                        ? 'bg-teal-600 w-8'
-                                        : 'bg-gray-300 dark:bg-gray-600 hover:bg-teal-400'
+                                        ? 'bg-teal-500 w-8'
+                                        : 'bg-white/20 hover:bg-teal-400'
                                         }`}
                                     aria-label={`View recommendation ${index + 1}`}
                                 />

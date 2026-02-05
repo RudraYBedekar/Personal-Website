@@ -4,26 +4,29 @@ import Chatbot from './components/Chatbot';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Certificates from './components/Certificates';
 import Recommendations from './components/Recommendations';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
+import SpaceBackground from './components/SpaceBackground';
 
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="relative overflow-hidden">
-        <CustomCursor />
+      <div className="relative overflow-hidden min-h-screen">
+        <SpaceBackground />
         <Chatbot />
         <Header />
         <main className="relative">
           <Hero />
+          <Skills />
           <About />
           <Projects />
           <Recommendations />
-          <Skills />
+          <Certificates />
+
           <Contact />
         </main>
         <Footer />

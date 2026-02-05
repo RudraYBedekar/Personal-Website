@@ -25,16 +25,15 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md py-3 shadow-lg'
-          : 'bg-white dark:bg-gray-900 py-5'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
+        ? 'bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md py-4 shadow-sm border-b border-slate-200 dark:border-slate-800'
+        : 'bg-transparent py-6'
+        }`}
     >
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center">
-          <a href="#home" className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            <span className="text-teal-600 dark:text-teal-400">Rudra</span> Bedekar
+          <a href="#home" className="text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-50 group">
+            <span className="text-primary-600 dark:text-primary-400 group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors duration-300">Rudra</span> Bedekar
           </a>
 
           {/* Desktop Navigation */}

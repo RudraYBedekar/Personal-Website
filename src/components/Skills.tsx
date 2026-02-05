@@ -14,9 +14,8 @@ const Skills = () => {
 
   return (
     <section
-      id="skills"
       ref={sectionRef}
-      className="py-20 bg-white dark:bg-gray-800"
+      className="py-12"
     >
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
@@ -24,7 +23,7 @@ const Skills = () => {
             My <span className="text-teal-600 dark:text-teal-400">Skills</span>
           </h2>
           <div className={`w-20 h-1 bg-teal-600 mx-auto rounded transition-all duration-700 delay-200 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}></div>
-          <p className={`mt-6 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`mt-6 text-gray-700 dark:text-gray-300 max-w-5xl mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             A comprehensive overview of my technical expertise across data engineering, AI, and software development.
           </p>
         </div>
@@ -33,16 +32,16 @@ const Skills = () => {
           {skillCategories.map((category: SkillCategory, index: number) => (
             <div
               key={index}
-              className={`bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-500 delay-${index * 100} ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:shadow-2xl hover:bg-white/10 transition-all duration-500 delay-${index * 100} ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             >
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">
+              <h3 className="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill: string, idx: number) => (
                   <span
                     key={idx}
-                    className={`px-3 py-1 text-xs font-medium rounded-full ${category.color}`}
+                    className={`px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-white border border-white/20`}
                   >
                     {skill}
                   </span>

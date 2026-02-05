@@ -1,6 +1,62 @@
 
 export const projects = [
     {
+        title: 'Whoop Fitness Data Analysis & Prediction',
+        description: 'A comprehensive analytics dashboard for Whoop fitness data. Features XGBoost-based recovery prediction models, A/B hypothesis testing, user segmentation, and model explainability using SHAP values.',
+        image: 'https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Python', 'Streamlit', 'XGBoost', 'SHAP', 'Data Analysis'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/WhoopData'
+    },
+    {
+        title: 'Hardware Reliability Analytics for Autonomous Sensor Fleet',
+        description: 'A real-time dashboard monitoring the health of an autonomous vehicle fleet. Features live geospatial tracking with Pydeck, predictive maintenance (RUL) calculations, and anomaly detection using Isolation Forest and Z-Score analysis.',
+        image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Python', 'Streamlit', 'Pydeck', 'Scikit-Learn', 'IoT'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/Reliability-Analytics-Hardware'
+    },
+    {
+        title: 'Chat With Your Dataset',
+        description: 'Interactive tool to upload CSV datasets and "chat" with them using LLMs (Gemini, OpenAI, Hugging Face). Includes natural language generation of Matplotlib/Plotly graphs for instant data visualization.',
+        image: 'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Streamlit', 'Pandas', 'LangChain', 'Plotly', 'LLM'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/Chat-With-Your-Dataset'
+    },
+    {
+        title: 'QualityGuard: Battery Manufacturing Prediction',
+        description: 'Data science system for early battery quality detection. Uses Random Forest and Isolation Forests to predict Cycle Life and Manufacturing Defects from initial charge/discharge data.',
+        image: 'https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Python', 'Machine Learning', 'Random Forest', 'Dash', 'Plotly'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/Nasa-Battery'
+    },
+    {
+        title: 'LLM Inference Profiler',
+        description: 'A production-quality framework for profiling LLM inference latency, throughput, and memory usage. Supports detailed metrics including end-to-end inference time and peak GPU memory allocation.',
+        image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Python', 'GPU Profiling', 'LLM', 'Benchmarking'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/LLM-Inference-Performance-Analyzer-GPU-Profiling-Benchmarking'
+    },
+    {
+        title: 'Enterprise AI Adoption Hub',
+        description: 'A platform enabling secure AI adoption with RAG capabilities, a structured prompt library with guardrails, and an admin dashboard for usage tracking. Built to prevent hallucinations and ensure compliance.',
+        image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Streamlit', 'RAG', 'LangChain', 'SQLite', 'Enterprise AI'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/Enterprise-AI-Adoption-Copilot-Enablement-Platform'
+    },
+    {
+        title: 'Certification Manager',
+        description: 'A dedicated application for tracking and managing professional certifications. Features include expiration alerts, renewal tracking, and a centralized repository for certificate documents.',
+        image: 'https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=800',
+        tags: ['Java', 'SQL', 'Management Tool'],
+        demoLink: '#',
+        repoLink: 'https://github.com/RudraYBedekar/Certification-Manager'
+    },
+    {
         title: 'Vehicle Diagnostics & Fault Detection Platform',
         description: 'A high-performance telemetry ingestion and diagnostics engine using FastAPI and PostgreSQL. It features real-time anomaly detection, root cause analysis for faults, and a RESTful API for vehicle monitoring.',
         image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -186,6 +242,17 @@ export const experienceItems = [
         ]
     },
     {
+        year: 'Nov 2022 – Aug 2023',
+        title: 'Data Science Intern',
+        company: 'AY TechInsight Private Limited',
+        location: 'Mumbai, India',
+        description: [
+            'Analyzed 200K+ application logs and system metrics using Python (Pandas, NumPy) and SQL to uncover trends, anomalies, and failure patterns.',
+            'Engineered features from log data (error frequency, latency spikes, time-window aggregates) to support predictive monitoring and incident prioritization.',
+            'Created automated analytics pipelines and Power BI dashboards to track 8+ KPIs, reducing recurring production incidents by ~20%.'
+        ]
+    },
+    {
         year: 'Aug 2022 – May 2023',
         title: 'Undergraduate Project Assistant – Face Recognition',
         company: 'Ramrao Adik Institute of Technology',
@@ -203,11 +270,62 @@ export const experienceItems = [
         company: 'Shavison Electronics Pvt. Ltd.',
         location: 'Mumbai, India',
         description: [
-            'Monitored **PCB assembly production** data, including throughput and defect rates, and performed root-cause analysis on production processes to improve yield by **8%** through process adjustments.',
-            'Worked with **hardware** to perform testing and troubleshooting on **PCBs** and embedded systems, ensuring quality standards were met before assembly.',
-            'Automated **manufacturing KPI reports** using **Excel and SQL**, cutting manual effort by **20%** and enabling faster quality-control decisions, optimizing workflow and enhancing productivity.',
-            'Leveraged **software** tools to develop and maintain data collection systems that integrated **SQL** databases with reporting dashboards, ensuring real-time data availability for decision-making.',
-            'Collaborated with the hardware team to ensure seamless **data transfer** from embedded systems to software solutions for better analysis and monitoring.'
+            'Analyzed PCB assembly production data, including throughput and defect rates, and performed root-cause analysis to improve yield by 8% through process adjustments.',
+            'Automated manufacturing KPI reports using Python, Excel, and SQL, cutting manual effort by 20% and enabling faster quality-control decisions.',
+            'Leveraged software tools to develop and maintain data collection systems that integrated SQL databases with reporting dashboards, ensuring real-time availability.',
+            'Collaborated with cross-functional teams to ensure seamless data transfer from embedded systems to analytics platforms for better monitoring.'
         ]
+    }
+];
+
+export const certificates = [
+    {
+        title: 'AWS Certified Data Engineer – Associate',
+        issuer: 'Amazon Web Services (AWS)',
+        date: 'Dec 2025',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png',
+        link: '#'
+    },
+    {
+        title: 'NVIDIA-Certified Professional: Accelerated Data Science',
+        issuer: 'NVIDIA',
+        date: 'Dec 2025',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/NVIDIA_logo.svg/1024px-NVIDIA_logo.svg.png',
+        link: '#'
+    },
+    {
+        title: 'SAP S/4HANA Essential Training',
+        issuer: 'LinkedIn',
+        date: 'Dec 2025',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png',
+        link: '#'
+    },
+    {
+        title: 'AWS Certified Machine Learning Engineer - Associate',
+        issuer: 'Amazon Web Services (AWS)',
+        date: 'Sep 2025',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png',
+        link: '#'
+    },
+    {
+        title: 'AWS Certified Cloud Practitioner',
+        issuer: 'Amazon Web Services (AWS)',
+        date: 'Nov 2024',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png',
+        link: '#'
+    },
+    {
+        title: 'CCNA: Introduction to Networks',
+        issuer: 'Cisco',
+        date: 'Aug 2022',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/1200px-Cisco_logo_blue_2016.svg.png',
+        link: '#'
+    },
+    {
+        title: 'AWS Academy Graduate - Cloud Foundations',
+        issuer: 'AWS Academy',
+        date: 'Feb 2022',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png',
+        link: '#'
     }
 ];
