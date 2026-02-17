@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SpaceBackground from './components/SpaceBackground';
 
+import Dashboards from './components/Dashboards';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Skills />
           <About />
           <Projects />
+          <Dashboards />
           <Recommendations />
           <Certificates />
 
