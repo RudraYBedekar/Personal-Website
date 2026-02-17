@@ -208,10 +208,10 @@ export const dashboards = [
     },
     {
         title: 'HR Analytics & Retention Dashboard',
-        description: 'Human Resources dashboard monitoring employee productivity, attrition risk, and retention KPIs. Combines ETL pipelines with predictive models to surface high‑risk segments, track hiring funnels, and support data‑driven workforce planning.',
+        description: 'Human Resources Tableau dashboard monitoring employee productivity, attrition risk, and retention KPIs. Combines ETL pipelines with predictive models to surface high‑risk segments, track hiring funnels, and support data‑driven workforce planning.',
         // HR dashboard (project4)
         image: '/project4.png',
-        tags: ['Power BI', 'HR Analytics', 'Attrition', 'Workforce Planning'],
+        tags: ['Tableau', 'HR Analytics', 'Attrition', 'Workforce Planning'],
         demoLink: '#',
         repoLink: '#'
     }
