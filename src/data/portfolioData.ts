@@ -183,7 +183,7 @@ export const dashboards = [
         title: 'Supply Chain Overview',
         description: 'A comprehensive supply chain dashboard visualizing delivery performance, inventory levels, and shipping delays. Features interactive maps for tracking shipments and analyzing delay trends by region.',
         // Power BI supply chain overview dashboard (image1)
-        image: '/image.png',
+        image: '/projects/image.png',
         tags: ['Power BI', 'Supply Chain', 'Logistics', 'Data Visualization'],
         demoLink: '#',
         repoLink: '#'
@@ -192,7 +192,7 @@ export const dashboards = [
         title: 'Delay Intelligence Dashboard',
         description: 'Advanced analytics dashboard focused on shipping delays. Monitors average delay metrics, categorizes delays by severity, and provides granular insights into delay causes across different warehouses and transport modes.',
         // Power BI delay / supply-chain insights dashboard (image2)
-        image: '/image2.png',
+        image: '/projects/image2.png',
         tags: ['Power BI', 'KPI Monitoring', 'Delay Analysis', 'Logistics'],
         demoLink: '#',
         repoLink: '#'
@@ -201,7 +201,7 @@ export const dashboards = [
         title: 'Blinkit Outlet Performance',
         description: 'Retail analytics dashboard for Blinkit outlets. Tracks total sales, average rating, item visibility, and outlet performance metrics to optimize inventory and improve customer satisfaction.',
         // Blinkit dashboard (project3)
-        image: '/project3.png',
+        image: '/projects/project3.png',
         tags: ['Power BI', 'Retail Analytics', 'Sales Performance', 'Blinkit'],
         demoLink: '#',
         repoLink: '#'
@@ -210,7 +210,7 @@ export const dashboards = [
         title: 'HR Analytics & Retention Dashboard',
         description: 'Human Resources Tableau dashboard monitoring employee productivity, attrition risk, and retention KPIs. Combines ETL pipelines with predictive models to surface high‑risk segments, track hiring funnels, and support data‑driven workforce planning.',
         // HR dashboard (project4)
-        image: '/project4.png',
+        image: '/projects/project4.png',
         tags: ['Tableau', 'HR Analytics', 'Attrition', 'Workforce Planning'],
         demoLink: '#',
         repoLink: '#'
