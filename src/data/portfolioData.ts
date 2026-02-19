@@ -230,7 +230,7 @@ export const skillCategories = [
     },
     {
         title: 'AI & Machine Learning',
-        skills: ['Machine learning fundamentals', 'Supervised & unsupervised models', 'Feature extraction', 'Model evaluation', 'LLM fundamentals', 'Prompt engineering', 'Vector similarity search', 'AI-driven analytics', 'Agentic AI', 'RAG (Retrieval-Augmented Generation)'],
+        skills: ['Machine learning fundamentals', 'Deep Learning', 'Generative AI', 'Large Language Models (LLMs)', 'LangChain', 'RAG (Retrieval-Augmented Generation)', 'NLP', 'Hugging Face', 'Agentic AI', 'Vector similarity search'],
         color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
     },
     {
