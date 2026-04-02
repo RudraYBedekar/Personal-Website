@@ -214,6 +214,14 @@ export const dashboards = [
         tags: ['Tableau', 'HR Analytics', 'Attrition', 'Workforce Planning'],
         demoLink: '#',
         repoLink: '#'
+    },
+    {
+        title: 'Spotify Analytics Dashboard',
+        description: 'Comprehensive music streaming analytics dashboard tracking total streams, highest grossing artists, and daily listening habits. Built to uncover trends in user engagement and track performance over time.',
+        image: '/projects/spotify.png',
+        tags: ['Power BI', 'Music Analytics', 'Data Visualization', 'Trends'],
+        demoLink: '#',
+        repoLink: '#'
     }
 ];
 
