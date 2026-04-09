@@ -189,6 +189,15 @@ export const dashboards = [
         repoLink: '#'
     },
     {
+        title: 'Airbnb Listing Analysis',
+        description: 'A data-driven dashboard analyzing Airbnb listings across major cities. Visualizes pricing trends, occupancy rates, and guest demographics to provide insights for hosts and travelers.',
+        // Power BI supply chain overview dashboard (image1)
+        image: '/projects/Airbnb.png',
+        tags: ['Tableau', 'Data Cleaning', 'Data Analysis', 'Data Visualization'],
+        demoLink: '#',
+        repoLink: '#'
+    },
+    {
         title: 'Delay Intelligence Dashboard',
         description: 'Advanced analytics dashboard focused on shipping delays. Monitors average delay metrics, categorizes delays by severity, and provides granular insights into delay causes across different warehouses and transport modes.',
         // Power BI delay / supply-chain insights dashboard (image2)
