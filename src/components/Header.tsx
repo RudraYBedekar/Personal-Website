@@ -1,97 +1,110 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, ExternalLink } from 'lucide-react';
+import { hero } from '../data/portfolioData';
+
+const navLinks = [
+  { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
+];
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 16);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
-        ? 'bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md py-4 shadow-sm border-b border-slate-200 dark:border-slate-800'
-        : 'bg-transparent py-6'
-        }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-zinc-50/85 dark:bg-[#0A0A0B]/85 backdrop-blur-lg border-b border-zinc-200/80 dark:border-zinc-800/80 py-3'
+          : 'bg-transparent py-4'
+      }`}
     >
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="max-w-5xl mx-auto px-6">
         <nav className="flex justify-between items-center">
-          <a href="#home" className="text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-50 group">
-            <span className="text-primary-600 dark:text-primary-400 group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors duration-300">Rudra</span> Bedekar
+          <a
+            href="#home"
+            className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 tracking-tight"
+          >
+            R. Bedekar
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"
+                className="text-xs text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
               >
                 {link.name}
               </a>
             ))}
-
+            <a
+              href={hero.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-medium text-sky-600 dark:text-sky-400 hover:text-sky-500 transition-colors"
+            >
+              <ExternalLink size={14} />
+              Resume
+            </a>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="p-1.5 rounded-md text-zinc-500 hover:bg-zinc-200/80 dark:hover:bg-zinc-800 transition-colors"
+              aria-label={theme === 'dark' ? 'Light mode' : 'Dark mode'}
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
           </div>
 
-          {/* Mobile menu + theme toggle */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center gap-1 md:hidden">
             <button
               onClick={toggleTheme}
-              className="p-2 mr-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="p-2 text-zinc-500"
+              aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle menu"
+              className="p-2 text-zinc-500"
+              aria-label="Menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </nav>
 
-        {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-900 absolute left-0 right-0 mt-4 p-4 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700 animate-fadeIn">
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
+          <div className="md:hidden mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm text-zinc-600 dark:text-zinc-400"
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href={hero.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-sky-600 dark:text-sky-400"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Resume
+            </a>
           </div>
         )}
       </div>

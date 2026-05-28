@@ -1,12 +1,14 @@
 import { useRef } from 'react';
+import { Award } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
-import { skillCategories } from '../data/portfolioData';
-
-interface SkillCategory {
-  title: string;
-  skills: string[];
-  color: string;
-}
+import {
+  currentlyExploring,
+  currentlyInterested,
+  featuredCertifications,
+  secondaryCertification,
+  skillCategories,
+} from '../data/portfolioData';
+import SectionHeader from './SectionHeader';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,41 +16,90 @@ const Skills = () => {
 
   return (
     <section
+      id="skills"
       ref={sectionRef}
-      className="py-12"
+      className="py-16 md:py-20 border-t border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-20"
     >
-      <div className="container mx-auto px-4">
-        <div className="mb-16 text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            My <span className="text-teal-600 dark:text-teal-400">Skills</span>
-          </h2>
-          <div className={`w-20 h-1 bg-teal-600 mx-auto rounded transition-all duration-700 delay-200 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}></div>
-          <p className={`mt-6 text-gray-700 dark:text-gray-300 max-w-5xl mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            A comprehensive overview of my technical expertise across data engineering, AI, and software development.
-          </p>
-        </div>
+      <div className="max-w-5xl mx-auto px-6">
+        <div
+          className={`transition-all duration-300 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+          }`}
+        >
+          <SectionHeader title="Skills & certifications" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category: SkillCategory, index: number) => (
-            <div
-              key={index}
-              className={`bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:shadow-2xl hover:bg-white/10 transition-all duration-500 delay-${index * 100} ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-            >
-              <h3 className="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">
-                {category.title}
-              </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            {featuredCertifications.map((cert) => (
+              <div
+                key={cert.title}
+                className="flex gap-2.5 rounded-lg border border-sky-500/20 bg-sky-500/5 dark:bg-sky-500/10 p-3"
+              >
+                <Award
+                  className="text-sky-600 dark:text-sky-400 shrink-0 mt-0.5"
+                  size={16}
+                />
+                <div>
+                  <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100 leading-snug">
+                    {cert.title}
+                  </p>
+                  <p className="text-[10px] text-zinc-500 mt-0.5">
+                    {cert.issuer} · {cert.date}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-zinc-400 mb-8 -mt-4">Also: {secondaryCertification}</p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
+            {skillCategories.map((category) => (
+              <div
+                key={category.title}
+                className="card-hover rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-3"
+              >
+                <h3 className="text-[11px] font-semibold text-zinc-800 dark:text-zinc-200 mb-2 uppercase tracking-wide">
+                  {category.title}
+                </h3>
+                <p className="text-[10px] text-zinc-500 dark:text-zinc-500 leading-relaxed">
+                  {category.skills.join(' · ')}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-3">
+            <div className="rounded-lg border border-sky-500/20 bg-sky-500/5 dark:bg-sky-500/10 p-4">
+              <p className="text-[11px] font-semibold text-sky-700 dark:text-sky-400 uppercase tracking-wide mb-3">
+                Currently interested in
+              </p>
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill: string, idx: number) => (
+                {currentlyInterested.map((role) => (
                   <span
-                    key={idx}
-                    className={`px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-white border border-white/20`}
+                    key={role}
+                    className="px-2.5 py-1 text-xs rounded-md bg-sky-500/15 text-sky-800 dark:text-sky-300 border border-sky-500/25 font-medium"
                   >
-                    {skill}
+                    {role}
                   </span>
                 ))}
               </div>
             </div>
-          ))}
+
+            <div className="rounded-lg border border-dashed border-zinc-300 dark:border-zinc-700 p-4">
+              <p className="text-[11px] font-semibold text-zinc-500 dark:text-zinc-500 uppercase tracking-wide mb-3">
+                Also exploring
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {currentlyExploring.map((topic) => (
+                  <span
+                    key={topic}
+                    className="px-2.5 py-1 text-xs rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 border border-zinc-200/80 dark:border-zinc-700/80"
+                  >
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

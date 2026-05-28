@@ -1,211 +1,190 @@
-import { useRef, useState } from 'react';
-import { Github } from 'lucide-react';
+import { useRef, useState, useCallback } from 'react';
+import { ChevronRight, ExternalLink, Github, X } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
-import { projects } from '../data/portfolioData';
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  demoLink: string;
-  repoLink: string;
-}
+import {
+  projects,
+  homepageProjectIds,
+  getProjectById,
+  githubRepositories,
+} from '../data/portfolioData';
+import SectionHeader from './SectionHeader';
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { threshold: 0.1 });
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const staticProjects = projects.slice(0, 3);
-  const marqueeProjects = projects.slice(3);
-  const displayMarqueeProjects = [...marqueeProjects, ...marqueeProjects];
+  const detailRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { threshold: 0.08 });
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const homepageProjects = homepageProjectIds
+    .map((id) => getProjectById(id))
+    .filter(Boolean) as typeof projects;
+
+  const selected = selectedId ? getProjectById(selectedId) : null;
+
+  const openProject = useCallback((id: string) => {
+    setSelectedId(id);
+    requestAnimationFrame(() => {
+      detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, []);
+
+  const closeDetail = () => setSelectedId(null);
 
   return (
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 overflow-hidden"
+      className="py-16 md:py-20 border-t border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-20"
     >
-      <div className="container mx-auto px-4">
-        <div className="mb-16 text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            My <span className="text-teal-600 dark:text-teal-400">Projects</span>
-          </h2>
-          <div className={`w-20 h-1 bg-teal-600 mx-auto rounded transition-all duration-700 delay-200 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}></div>
-          <p className={`mt-6 text-gray-700 dark:text-gray-300 max-w-5xl mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Here are some of my recent projects that showcase my skills and expertise. The top featured projects highlight my focus on Data Analysis and Engineering.
-          </p>
-        </div>
+      <div className="max-w-5xl mx-auto px-6">
+        <div
+          className={`transition-all duration-300 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+          }`}
+        >
+          <SectionHeader
+            title="Featured projects"
+            subtitle="Tap a card for details — 9 builds on GitHub."
+          />
 
-        {/* Static Grid for Top 3 Projects */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {staticProjects.map((project: Project, index: number) => (
-            <div
-              key={`static-${index}`}
-              className={`group perspective-1000 h-[400px] transition-all duration-1000 delay-${index * 150} ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
-              onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-            >
-              <div
-                className={`relative w-full h-full transform-style-3d transition-transform duration-700 cursor-pointer shadow-xl rounded-xl ${expandedIndex === index ? 'rotate-y-180' : ''}`}
-              >
-                {/* Front Face */}
-                <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-lg flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-                      <h3 className="text-xl font-bold text-white p-4 drop-shadow-md">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="p-4 flex-grow flex flex-col justify-between">
-                    <div>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
-                          <span
-                            key={tagIndex}
-                            className="px-3 py-1 bg-white/10 text-white border border-white/20 text-xs font-medium rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {project.tags.length > 3 && (
-                          <span className="px-3 py-1 bg-white/5 text-gray-300 border border-white/10 text-xs font-medium rounded-full">
-                            +{project.tags.length - 3}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between mt-2">
-                      <span className="text-sm text-gray-400 italic">Tap for details</span>
-                      <a
-                        href={project.repoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-teal-600 text-white rounded-lg border border-white/10 transition-colors z-10 backdrop-blur-sm"
-                        onClick={(e) => e.stopPropagation()}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+            {homepageProjects.map((project) => {
+              const isActive = selectedId === project.id;
+              return (
+                <button
+                  key={project.id}
+                  type="button"
+                  onClick={() => openProject(project.id)}
+                  className={`card-hover group text-left flex flex-col rounded-lg border p-4 transition-all duration-200 ${
+                    isActive
+                      ? 'border-sky-500/60 bg-sky-500/5 ring-1 ring-sky-500/30'
+                      : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50'
+                  }`}
+                >
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {project.metrics.map((m) => (
+                      <span
+                        key={m}
+                        className="px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide rounded bg-sky-500/10 text-sky-600 dark:text-sky-400"
                       >
-                        <Github size={16} />
-                        <span>Code</span>
-                      </a>
-                    </div>
+                        {m}
+                      </span>
+                    ))}
                   </div>
-                </div>
-
-                {/* Back Face */}
-                <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-xl overflow-hidden bg-[#0a0a16]/95 border border-teal-500/50 p-6 flex flex-col justify-center text-center shadow-xl backdrop-blur-xl">
-                  <h3 className="text-xl font-bold text-white mb-4">{project.title}</h3>
-                  <p className="text-gray-200 text-sm leading-relaxed mb-6">
-                    {project.description}
+                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1.5 group-hover:text-sky-500 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed flex-grow">
+                    {project.cardSummary}
                   </p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-zinc-400 group-hover:text-sky-500 transition-colors">
+                    View details
+                    <ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
-                  <div className="flex justify-center gap-4 mt-auto">
+          <div
+            id="project-detail"
+            ref={detailRef}
+            className="scroll-mt-24"
+            aria-live="polite"
+          >
+            <div
+              className={`grid transition-all duration-300 ease-out ${
+                selected ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className="overflow-hidden">
+                {selected && (
+                  <article
+                    key={selected.id}
+                    className="project-detail-panel rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 p-5 sm:p-6"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div>
+                        <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">
+                          {selected.title}
+                        </h3>
+                        <p className="text-xs text-zinc-500 mt-1">{selected.problem}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={closeDetail}
+                        className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors shrink-0"
+                        aria-label="Close project details"
+                      >
+                        <X size={18} />
+                      </button>
+                    </div>
+
+                    <div className="flex gap-1.5 overflow-x-auto pb-2 mb-4 -mx-1 px-1 scrollbar-none">
+                      {projects.map((p) => (
+                        <button
+                          key={p.id}
+                          type="button"
+                          onClick={() => openProject(p.id)}
+                          className={`shrink-0 px-2.5 py-1 text-[11px] rounded-md whitespace-nowrap transition-colors ${
+                            p.id === selected.id
+                              ? 'bg-sky-600 text-white'
+                              : 'bg-zinc-200/80 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700'
+                          }`}
+                        >
+                          {p.title}
+                        </button>
+                      ))}
+                    </div>
+
+                    <ul className="space-y-2 mb-5">
+                      {selected.highlights.map((line) => (
+                        <li
+                          key={line}
+                          className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed flex gap-2"
+                        >
+                          <span className="text-sky-500 shrink-0">—</span>
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {selected.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 text-[10px] font-mono rounded bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
                     <a
-                      href={project.repoLink}
+                      href={selected.repoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-2 bg-white text-gray-900 rounded-full font-medium hover:bg-teal-400 transition-colors shadow-lg"
-                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-sky-500 hover:text-sky-400 transition-colors"
                     >
-                      View Code
+                      <Github size={14} />
+                      View repository
+                      <ExternalLink size={12} />
                     </a>
-                    {project.demoLink && (
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-2 bg-teal-600 text-white rounded-full font-medium hover:bg-teal-500 transition-colors shadow-lg border border-teal-500"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
+                  </article>
+                )}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Rotating Marquee for Other Projects */}
-        <div className="w-full overflow-hidden select-none relative">
-          <div className="flex animate-marquee pause-on-hover py-4">
-            {displayMarqueeProjects.map((project: Project, index: number) => (
-              <div
-                key={`marquee-${index}`}
-                className="flex-shrink-0 w-80 md:w-96 mx-4 group perspective-1000 h-[400px]"
-                // Note: Expanded state in marquee is tricky, simplified to just show content or use simple flip on hover if supported, 
-                // but for marquee moving items, click-to-flip can be jarring. 
-                // We'll use a hover-based flip for the marquee items for better UX, or click if pauses.
-                // Let's stick to the same Click logic but ensuring marquee pauses.
-                onClick={() => setExpandedIndex(expandedIndex === (index + 3) ? null : (index + 3))}
-              // Index offset by 3 to avoid conflict with static if we used single state, but actually key collision matters more. 
-              // Actually, expandedIndex state is single shared state. clicking one closes others.
-              // To avoid index collision, we construct unique ID or just use offset.
-              >
-                <div
-                  className={`relative w-full h-full transform-style-3d transition-transform duration-700 cursor-pointer shadow-xl rounded-xl ${expandedIndex === (index + 3) ? 'rotate-y-180' : ''}`}
-                >
-                  {/* Front Face (Same as static) */}
-                  <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-lg flex flex-col">
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-                        <h3 className="text-xl font-bold text-white p-4 drop-shadow-md">
-                          {project.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    <div className="p-4 flex-grow flex flex-col justify-between">
-                      <div>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
-                            <span
-                              key={tagIndex}
-                              className="px-3 py-1 bg-white/10 text-white border border-white/20 text-xs font-medium rounded-full"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="mt-2 text-center text-sm text-gray-400 italic">Tap for details</div>
-                    </div>
-                  </div>
-
-                  {/* Back Face (Same as static) */}
-                  <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-xl overflow-hidden bg-[#0a0a16]/95 border border-teal-500/50 p-6 flex flex-col justify-center text-center shadow-xl backdrop-blur-xl">
-                    <h3 className="text-xl font-bold text-white mb-4">{project.title}</h3>
-                    <p className="text-gray-200 text-sm leading-relaxed mb-6 line-clamp-4">
-                      {project.description}
-                    </p>
-                    <div className="flex justify-center gap-4 mt-auto">
-                      <a
-                        href={project.repoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-2 bg-teal-600 text-white rounded-full font-medium hover:bg-teal-500 transition-colors shadow-lg border border-teal-500"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        View Code
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
+
+          <a
+            href={githubRepositories}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-sky-500 transition-colors"
+          >
+            All 45+ repositories on GitHub
+            <ExternalLink size={12} />
+          </a>
         </div>
       </div>
     </section>

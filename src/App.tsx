@@ -1,34 +1,24 @@
 import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
-import Chatbot from './components/Chatbot';
+import Background from './components/Background';
 import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Certificates from './components/Certificates';
-import Recommendations from './components/Recommendations';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import SpaceBackground from './components/SpaceBackground';
-
-import Dashboards from './components/Dashboards';
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="relative overflow-hidden min-h-screen">
-        <SpaceBackground />
-        <Chatbot />
+      <div className="relative min-h-screen text-zinc-900 dark:text-zinc-100">
+        <Background />
         <Header />
         <main className="relative">
           <Hero />
+          <Experience />
           <Skills />
-          <About />
           <Projects />
-          <Dashboards />
-          <Recommendations />
-          <Certificates />
-
           <Contact />
         </main>
         <Footer />

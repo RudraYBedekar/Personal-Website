@@ -1,95 +1,91 @@
-import { useEffect, useRef, useState } from 'react';
-
+import { ArrowDown, ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { hero } from '../data/portfolioData';
 
 const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [textOpacity, setTextOpacity] = useState(0);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!heroRef.current) return;
-
-      const { left, top, width, height } = heroRef.current.getBoundingClientRect();
-      const x = (e.clientX - left) / width;
-      const y = (e.clientY - top) / height;
-
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Animate text opacity on load
-    const timer = setTimeout(() => {
-      setTextOpacity(1);
-    }, 500);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearTimeout(timer);
-    };
-  }, []);
-
-  const calculateTransform = (factor: number) => {
-    const xOffset = (mousePosition.x - 0.5) * factor;
-    const yOffset = (mousePosition.y - 0.5) * factor;
-    return `translate(${xOffset}px, ${yOffset}px)`;
-  };
+  const { availability, targetRoles, relocation, name, headline, intro, resumeUrl, techStack, links } =
+    hero;
 
   return (
-    <section
-      id="home"
-      ref={heroRef}
-      className="relative min-h-[60vh] pt-32 pb-16 flex items-center justify-center overflow-hidden"
-    >
-      {/* Animated background elements */}
-      < div className="absolute inset-0 overflow-hidden" >
-        <div className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] bg-gradient-to-br from-purple-500/20 to-teal-500/10 rounded-full blur-3xl transform-gpu animate-blob" />
-        <div className="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] bg-gradient-to-tr from-teal-500/10 to-blue-500/20 rounded-full blur-3xl transform-gpu animate-blob animation-delay-2000" />
-        <div className="absolute left-[30%] top-[20%] w-[40%] h-[40%] bg-gradient-to-br from-pink-500/10 to-yellow-500/10 rounded-full blur-3xl transform-gpu animate-blob animation-delay-4000" />
-      </div >
-
-      {/* Content wrapper */}
-      <div className="container mx-auto px-4 z-10">
-        <div
-          className="max-w-6xl mx-auto text-center"
-          style={{
-            opacity: textOpacity,
-            transition: 'opacity 1s ease-out, transform 0.5s ease-out',
-            transform: calculateTransform(10)
-          }}
-        >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 text-white leading-tight tracking-tight drop-shadow-lg">
-            <span className="block transform">Hello, I'm</span>
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 pb-2">
-              Rudra Yashodhan Bedekar
+    <section id="home" className="relative flex items-center pt-28 pb-16 md:pb-20">
+      <div className="max-w-5xl mx-auto px-6 w-full">
+        <div className="flex flex-wrap items-center gap-2 mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-medium">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
             </span>
-          </h1>
-
-          <p className="text-xl md:text-2xl mb-10 text-gray-200 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
-            A passionate <span className="font-medium text-teal-400">Data Analyst & Data Scientist</span> skilled in
-            Python, SQL, Excel, Power BI, and Machine Learning technologies, creating impactful solutions through data-driven insights.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <a
-              href="#projects"
-              className="px-8 py-4 rounded-full bg-teal-600 hover:bg-teal-700 text-white font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 rounded-full border border-gray-400 text-white font-medium hover:bg-white/10 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
-            >
-              Contact Me
-            </a>
+            {availability}
           </div>
+          <div className="inline-flex items-center px-3 py-1 rounded-full border border-sky-500/25 bg-sky-500/10 text-sky-700 dark:text-sky-400 text-xs font-medium">
+            Interested in {targetRoles}
+          </div>
+          <span className="text-xs text-zinc-500 dark:text-zinc-500">{relocation}</span>
         </div>
 
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-zinc-900 dark:text-zinc-50 tracking-tight leading-[1.12] mb-4">
+          {name}
+        </h1>
 
-      </div >
-    </section >
+        <p className="text-base md:text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl leading-snug mb-3 font-medium">
+          {headline}
+        </p>
+
+        <p className="text-sm text-zinc-500 dark:text-zinc-500 max-w-xl leading-relaxed mb-8">
+          {intro}
+        </p>
+
+        <p className="text-xs font-mono text-zinc-500 dark:text-zinc-500 mb-8 tracking-wide">
+          {techStack}
+        </p>
+
+        <div className="flex flex-wrap gap-2.5 mb-8">
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900 text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <ExternalLink size={16} />
+            Resume
+          </a>
+          <a
+            href="#experience"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-colors"
+          >
+            Experience
+            <ArrowDown size={14} />
+          </a>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-500 dark:text-zinc-500">
+          <a
+            href={links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+          >
+            <Github size={16} />
+            GitHub
+          </a>
+          <a
+            href={links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+          >
+            <Linkedin size={16} />
+            LinkedIn
+          </a>
+          <a
+            href={`mailto:${links.email}`}
+            className="inline-flex items-center gap-1.5 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+          >
+            <Mail size={16} />
+            Email
+          </a>
+        </div>
+      </div>
+    </section>
   );
 };
 

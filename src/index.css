@@ -3,39 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --primary: 14 165 233;
-    /* sky-500 */
-    --secondary: 99 102 241;
-    /* indigo-500 */
-    --accent: 244 63 94;
-    /* rose-500 */
-    --background: 248 250 252;
-    /* slate-50 */
-    --foreground: 15 23 42;
-    /* slate-900 */
-  }
-
-  [data-theme="dark"] {
-    --background: 2 6 23;
-    /* slate-950 */
-    --foreground: 241 245 249;
-    /* slate-100 */
-  }
-
-  [data-theme="light"] {
-    --background: 248 250 252;
-    /* slate-50 */
-    --foreground: 15 23 42;
-    /* slate-900 */
-  }
-
   html {
     @apply scroll-smooth;
   }
 
   body {
-    @apply bg-slate-900 text-slate-100 font-sans antialiased;
+    @apply font-sans antialiased bg-zinc-50 text-zinc-900 dark:bg-[#0A0A0B] dark:text-zinc-100;
   }
 
   h1,
@@ -44,159 +17,133 @@
   h4,
   h5,
   h6 {
-    @apply font-serif font-bold tracking-tight;
+    @apply font-sans font-semibold tracking-tight;
   }
 }
 
 @layer components {
-
-  /* Space Background Animations */
-  .animate-orbit {
-    animation: orbit 20s linear infinite;
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
   }
 
-  .animate-orbit-slow {
-    animation: orbit 40s linear infinite;
+  .card-hover:hover {
+    @apply border-zinc-300 dark:border-zinc-700 shadow-sm dark:shadow-zinc-900/50 -translate-y-0.5;
   }
 
-  .animate-orbit-reverse {
-    animation: orbit-reverse 25s linear infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  /* Loader animations */
-  .loader-circle {
-    @apply absolute left-0 top-0 w-full h-full border-4 border-transparent border-t-teal-500 rounded-full;
-    animation: spin 1s linear infinite;
-  }
-
-  .loader-circle-2 {
-    @apply border-transparent border-r-teal-500;
-    animation: spin 1.5s linear infinite;
-  }
-
-  .loader-circle-3 {
-    @apply border-transparent border-b-teal-500;
-    animation: spin 2s linear infinite;
-  }
-
-  /* Project card effects */
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-
-  .transform-style-3d {
-    transform-style: preserve-3d;
-  }
-
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-
-  .rotate-y-180 {
-    transform: rotateY(180deg);
-  }
-
-  .project-card {
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  .project-detail-panel {
+    animation: detailIn 0.35s ease-out forwards;
   }
 }
 
-@layer utilities {
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 0.3s ease-in-out forwards;
-  }
-
-  .animate-blob {
-    animation: blob 15s infinite alternate;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes fadeIn {
+@keyframes detailIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes blob {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-
+@keyframes pulse-slow {
+  0%,
   100% {
-    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
+@keyframes drift {
+  0%,
   100% {
-    transform: translateX(-50%);
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 15px);
   }
 }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
+@keyframes drift-reverse {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(15px, -20px);
+  }
 }
 
-.pause-on-hover:hover {
-  animation-play-state: paused;
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-24px) translateX(8px);
+    opacity: 0.55;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+.animate-drift-reverse {
+  animation: drift-reverse 22s ease-in-out infinite;
+}
+
+.animate-dash {
+  stroke-dasharray: 8 12;
+  animation: dash 20s linear infinite;
+}
+
+.animate-node-pulse {
+  animation: node-pulse 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-dash,
+  .animate-drift,
+  .animate-drift-reverse,
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-node-pulse {
+    animation: none !important;
+  }
 }
