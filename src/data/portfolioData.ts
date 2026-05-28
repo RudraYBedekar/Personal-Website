@@ -1,15 +1,28 @@
 export const RESUME_URL =
   'https://drive.google.com/file/d/1Hx97VpZW3nJFkvnvAcD9x6wHUaSQixDW/view?usp=sharing';
 
+export const SITE_URL = 'https://rudraybedekar.netlify.app';
+
+export const site = {
+  url: SITE_URL,
+  title: 'Rudra Bedekar — Data & AI Engineer',
+  description:
+    'Data & AI Engineer specializing in analytics, ETL pipelines, Power BI, and LLM systems on AWS. Open to data analytics and full-time roles in the US.',
+  ogImage: `${SITE_URL}/og-image.svg`,
+};
+
 export const hero = {
-  availability: 'Open to Full-Time Opportunities',
-  targetRoles: 'Data Analytics · Data Engineering · BI & Analytics',
-  relocation: 'US relocation',
+  statusLine:
+    'Open to full-time · Data analytics & data engineering · US relocation',
   name: 'Rudra Yashodhan Bedekar',
   headline:
-    'AI & Data Engineer shipping scalable pipelines, production analytics, and LLM systems on AWS.',
+    'AI & Data Engineer building scalable data, analytics, and AI systems on AWS',
   intro:
-    'From multi-million-row ETL and CI/CD-backed apps to RAG platforms and real-time diagnostics—systems built for reliability, observability, and impact.',
+    'I engineer high-throughput ETL/ELT pipelines, design executive-ready BI dashboards, and deploy production AI applications. Recipient of the Academic Excellence Award in Information Systems from George Mason University, I focus on building reliable, cost-efficient, and secure data infrastructure.',
+  metricsLine:
+    '3M+ records processed · 75% faster pipelines · AWS Certified',
+  education: 'M.S. Information Systems · George Mason University (Academic Excellence Award Recipient)',
+  workAuthorization: 'Authorized to work in the U.S.',
   resumeUrl: RESUME_URL,
   techStack: 'Python · SQL · AWS · Kafka · Power BI · LLMs',
   links: {
@@ -19,7 +32,6 @@ export const hero = {
   },
 };
 
-/** Roles and domains actively pursuing */
 export const currentlyInterested = [
   'Data Analytics',
   'Data Engineering',
@@ -41,16 +53,35 @@ export const featuredCertifications = [
     title: 'AWS Certified Data Engineer – Associate',
     issuer: 'AWS',
     date: 'Dec 2025',
+    logo: 'aws',
+    verifyUrl:
+      'https://www.linkedin.com/in/rudra-bedekar-259728258/details/certifications/',
   },
   {
     title: 'NVIDIA-Certified Professional: Accelerated Data Science',
     issuer: 'NVIDIA',
     date: 'Dec 2025',
+    logo: 'nvidia',
+    verifyUrl:
+      'https://www.linkedin.com/in/rudra-bedekar-259728258/details/certifications/',
   },
 ];
 
-export const secondaryCertification =
-  'AWS Certified Machine Learning Engineer – Associate';
+export const secondaryCertification = {
+  title: 'AWS Certified Machine Learning Engineer – Associate',
+  verifyUrl:
+    'https://www.linkedin.com/in/rudra-bedekar-259728258/details/certifications/',
+};
+
+export type ProjectIcon =
+  | 'brain'
+  | 'database'
+  | 'chart'
+  | 'car'
+  | 'message'
+  | 'cpu'
+  | 'box'
+  | 'docker';
 
 export interface Project {
   id: string;
@@ -61,9 +92,10 @@ export interface Project {
   problem: string;
   highlights: string[];
   repoLink: string;
+  demoLink?: string;
+  icon: ProjectIcon;
 }
 
-/** Full catalog — detail panel can browse all; homepage shows 3 cards only. */
 export const projects: Project[] = [
   {
     id: 'enterprise-ai',
@@ -78,6 +110,35 @@ export const projects: Project[] = [
     ],
     repoLink:
       'https://github.com/RudraYBedekar/Enterprise-AI-Adoption-Copilot-Enablement-Platform',
+    icon: 'brain',
+  },
+  {
+    id: 'warehouse-etl',
+    title: 'Warehouse Data Pipeline',
+    cardSummary: 'ETL automation and KPI dashboards for inventory and fulfillment.',
+    metrics: ['ETL', '2M+ scale'],
+    stack: ['Python', 'SQL', 'Airflow', 'PostgreSQL', 'Tableau'],
+    problem: 'Warehouse ops data was siloed with slow manual reporting.',
+    highlights: [
+      'End-to-end ETL with modeled schema for analytics-ready datasets.',
+      'KPI dashboards for inventory, throughput, and fulfillment decisions.',
+    ],
+    repoLink: 'https://github.com/RudraYBedekar/ETL-Manufacturing',
+    icon: 'database',
+  },
+  {
+    id: 'whoop-analytics',
+    title: 'Whoop Fitness Analytics',
+    cardSummary: 'Recovery prediction and A/B testing on wearable fitness data.',
+    metrics: ['XGBoost', 'SHAP'],
+    stack: ['Python', 'Streamlit', 'XGBoost', 'SHAP'],
+    problem: 'Wearable data needed actionable recovery insights and experiment analysis.',
+    highlights: [
+      'XGBoost recovery models with SHAP explainability for stakeholders.',
+      'Segmentation, hypothesis testing, and interactive EDA dashboards.',
+    ],
+    repoLink: 'https://github.com/RudraYBedekar/WhoopData',
+    icon: 'chart',
   },
   {
     id: 'autonomous-fleet',
@@ -92,6 +153,7 @@ export const projects: Project[] = [
     ],
     repoLink:
       'https://github.com/RudraYBedekar/Autonomous-Fleet-Reliability-Intelligence-Platform',
+    icon: 'car',
   },
   {
     id: 'llm-profiler',
@@ -106,6 +168,7 @@ export const projects: Project[] = [
     ],
     repoLink:
       'https://github.com/RudraYBedekar/LLM-Inference-Performance-Analyzer-GPU-Profiling-Benchmarking',
+    icon: 'cpu',
   },
   {
     id: 'vehicle-diagnostics',
@@ -120,25 +183,13 @@ export const projects: Project[] = [
     ],
     repoLink:
       'https://github.com/RudraYBedekar/Vehicle-Diagnostics-Fault-Detection-Platform',
-  },
-  {
-    id: 'warehouse-etl',
-    title: 'Warehouse Data Pipeline',
-    cardSummary: 'ETL automation and KPI dashboards for inventory and fulfillment.',
-    metrics: ['ETL', 'Analytics'],
-    stack: ['Python', 'SQL', 'Airflow', 'PostgreSQL', 'Tableau'],
-    problem: 'Warehouse ops data was siloed with slow manual reporting.',
-    highlights: [
-      'End-to-end ETL with modeled schema for analytics-ready datasets.',
-      'KPI dashboards for inventory, throughput, and fulfillment decisions.',
-    ],
-    repoLink: 'https://github.com/RudraYBedekar/ETL-Manufacturing',
+    icon: 'car',
   },
   {
     id: 'chat-dataset',
     title: 'Chat With Your Dataset',
     cardSummary: 'Natural-language analytics and charts over uploaded CSVs via LLMs.',
-    metrics: ['LLM', 'NL→SQL'],
+    metrics: ['LLM', 'NL analytics'],
     stack: ['Streamlit', 'LangChain', 'Pandas', 'Plotly'],
     problem: 'Analysts needed fast exploration without writing boilerplate viz code.',
     highlights: [
@@ -146,6 +197,7 @@ export const projects: Project[] = [
       'Auto-generated Matplotlib/Plotly visuals from natural language queries.',
     ],
     repoLink: 'https://github.com/RudraYBedekar/Chat-With-Your-Dataset',
+    icon: 'message',
   },
   {
     id: 'reliability-hardware',
@@ -159,19 +211,7 @@ export const projects: Project[] = [
       'Streamlit ops dashboard for reliability engineering workflows.',
     ],
     repoLink: 'https://github.com/RudraYBedekar/Reliability-Analytics-Hardware',
-  },
-  {
-    id: 'whoop-analytics',
-    title: 'Whoop Fitness Analytics',
-    cardSummary: 'Recovery prediction and A/B testing on wearable fitness data.',
-    metrics: ['XGBoost', 'SHAP'],
-    stack: ['Python', 'Streamlit', 'XGBoost', 'SHAP'],
-    problem: 'Wearable data needed actionable recovery insights and experiment analysis.',
-    highlights: [
-      'XGBoost recovery models with SHAP explainability.',
-      'Segmentation, hypothesis testing, and interactive EDA dashboards.',
-    ],
-    repoLink: 'https://github.com/RudraYBedekar/WhoopData',
+    icon: 'box',
   },
   {
     id: 'dockerai',
@@ -185,17 +225,21 @@ export const projects: Project[] = [
       'Focused on deployment consistency across environments.',
     ],
     repoLink: 'https://github.com/RudraYBedekar/dockerai',
+    icon: 'docker',
   },
 ];
 
-/** IDs shown as the 3 homepage cards */
 export const homepageProjectIds = [
   'enterprise-ai',
-  'autonomous-fleet',
-  'llm-profiler',
+  'warehouse-etl',
+  'whoop-analytics',
 ] as const;
 
 export const getProjectById = (id: string) => projects.find((p) => p.id === id);
+
+export const moreProjects = projects.filter(
+  (p) => !homepageProjectIds.includes(p.id as (typeof homepageProjectIds)[number])
+);
 
 export const githubProfile = 'https://github.com/RudraYBedekar';
 export const githubRepositories =
@@ -204,23 +248,63 @@ export const githubRepositories =
 export const skillCategories = [
   {
     title: 'Cloud & DevOps',
-    skills: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Terraform'],
+    skills: [
+      'AWS',
+      'IAM',
+      'EC2',
+      'S3',
+      'Glue',
+      'Athena',
+      'Kinesis',
+      'Bedrock',
+      'Docker',
+      'Kubernetes',
+      'Jenkins',
+      'CI/CD',
+      'Terraform',
+    ],
   },
   {
     title: 'Data Engineering',
-    skills: ['SQL', 'ETL/ELT', 'Kafka', 'PostgreSQL', 'Snowflake', 'Data quality'],
+    skills: [
+      'SQL',
+      'ETL/ELT',
+      'dbt',
+      'Kafka',
+      'PostgreSQL',
+      'Snowflake',
+      'Data Validation',
+      'Data Quality',
+      'Data Pipelines',
+    ],
   },
   {
     title: 'AI / ML',
-    skills: ['LLMs', 'RAG', 'LangChain', 'Agents', 'scikit-learn', 'Hugging Face'],
+    skills: [
+      'LLMs',
+      'RAG',
+      'LangChain',
+      'AI Agents',
+      'scikit-learn',
+      'Hugging Face',
+      'Predictive Analytics',
+    ],
   },
   {
     title: 'Backend & Apps',
-    skills: ['Python', 'FastAPI', 'JavaScript', 'REST APIs'],
+    skills: ['Python', 'FastAPI', 'JavaScript', 'REST APIs', 'API Integration'],
   },
   {
-    title: 'Analytics',
-    skills: ['Power BI', 'Tableau', 'Streamlit', 'KPI reporting'],
+    title: 'Analytics & Viz',
+    skills: [
+      'Power BI',
+      'Tableau',
+      'Streamlit',
+      'KPI Reporting',
+      'Data Visualization',
+      'Forecasting',
+      'Trend Analysis',
+    ],
   },
 ];
 
@@ -239,10 +323,12 @@ export const experienceItems: ExperienceItem[] = [
     title: 'Data Analyst – Graduate Applied Project',
     company: 'George Mason University',
     location: 'Fairfax, VA',
-    metrics: ['2M+ records', '75% faster', '96% KPI accuracy'],
+    metrics: ['AWS ETL/ELT', '2M+ records', '75% faster', '96% KPI accuracy', 'Power BI'],
     highlights: [
-      'Built AWS ETL/ELT pipelines (Python, SQL) with automated validation, anomaly detection, and quality monitoring.',
-      'Delivered Power BI forecasting and ops dashboards for weekly stakeholder reviews; RCA on pipeline failures.',
+      'Engineered AWS-based ETL/ELT pipelines using Python and SQL to process 2M+ records, reducing analytics runtime by 75%.',
+      'Automated data validation, anomaly detection, and quality monitoring workflows, improving KPI reporting accuracy to 96%.',
+      'Developed Power BI dashboards for forecasting, operational tracking, and trend analysis used in weekly stakeholder reviews.',
+      'Investigated pipeline failures and reporting inconsistencies through root-cause analysis, improving reporting reliability.',
     ],
   },
   {
@@ -250,10 +336,13 @@ export const experienceItems: ExperienceItem[] = [
     title: 'Web Developer Intern',
     company: 'GFX Bandits IT Solution LLP',
     location: 'Mumbai, India',
-    metrics: ['Docker', 'Kubernetes', 'Jenkins CI/CD'],
+    metrics: ['Python & JS', 'Docker & K8s', 'Jenkins CI/CD', 'API Optimization'],
     highlights: [
-      'Shipped responsive apps (Python, JavaScript, SQL); containerized with Docker/K8s and Jenkins CI/CD.',
-      'Optimized APIs and SQL for faster dashboards; debugged production issues via log monitoring.',
+      'Developed and deployed responsive web applications using Python, JavaScript, SQL, HTML, and CSS for workflow automation.',
+      'Containerized applications using Docker and Kubernetes, improving deployment consistency across environments.',
+      'Built Jenkins CI/CD pipelines automating build, testing, and deployment workflows.',
+      'Optimized backend APIs and SQL queries, improving dashboard performance and reducing response time significantly.',
+      'Debugged production issues and monitored logs to improve runtime stability and user experience.',
     ],
   },
   {
@@ -261,10 +350,12 @@ export const experienceItems: ExperienceItem[] = [
     title: 'Data Analyst Intern',
     company: 'AY TechInsight Private Limited',
     location: 'Mumbai, India',
-    metrics: ['3M+ records', '40% less manual work'],
+    metrics: ['3M+ records', 'Pandas & SQL', 'ETL workflows', '40% less manual effort'],
     highlights: [
-      'Transformed 3M+ records via Python, pandas, NumPy, SQL, and ETL workflows with automated quality checks.',
-      'KPI, trend, and variance analysis to surface operational gaps and improve reporting accuracy.',
+      'Processed and transformed 3M+ records using Python, pandas, NumPy, SQL, and ETL workflows.',
+      'Automated recurring reporting pipelines and data quality checks, reducing manual reporting effort by 40%.',
+      'Performed KPI, trend, and variance analysis to identify operational performance gaps and business risks.',
+      'Improved reporting accuracy and operational visibility through analytics automation and data validation workflows.',
     ],
   },
 ];
@@ -272,7 +363,7 @@ export const experienceItems: ExperienceItem[] = [
 export const contact = {
   headline: 'Open to opportunities',
   subline:
-    'Especially interested in data analytics and data-domain roles—plus AI/data engineering. Full-time in the US, open to relocation.',
+    'Especially data analytics and data-domain roles—plus AI/data engineering. Full-time in the US, open to relocation.',
   footnote: 'Typically respond within 24–48 hours.',
   email: 'rudra.bedekar03@gmail.com',
   linkedin: 'https://www.linkedin.com/in/rudra-bedekar-259728258/',

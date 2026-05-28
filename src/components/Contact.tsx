@@ -21,7 +21,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-16 md:py-20 border-t border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-20"
+      className="py-6 md:py-8 border-t border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-20"
     >
       <Toaster position="top-right" />
       <div className="max-w-5xl mx-auto px-6">
@@ -39,7 +39,7 @@ const Contact = () => {
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             <a
               href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900 text-sm font-medium hover:opacity-90 transition-opacity"
+              className="focus-ring inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900 text-sm font-medium hover:opacity-90 transition-opacity"
             >
               <Mail size={16} />
               Email
@@ -48,7 +48,7 @@ const Contact = () => {
               href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-colors"
+              className="focus-ring inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-colors"
             >
               <Linkedin size={16} />
               LinkedIn
@@ -57,7 +57,7 @@ const Contact = () => {
               href={contact.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-colors"
+              className="focus-ring inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-colors"
             >
               <ExternalLink size={16} />
               Resume
