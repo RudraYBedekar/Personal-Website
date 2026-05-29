@@ -1,5 +1,5 @@
 export const RESUME_URL =
-  'https://drive.google.com/file/d/1Hx97VpZW3nJFkvnvAcD9x6wHUaSQixDW/view?usp=sharing';
+  'https://drive.google.com/file/d/1NBc0JU2eQ5jAd_bx61QzP0vkftx6tvlX/view?usp=drive_link';
 
 export const SITE_URL = 'https://rudraybedekar.netlify.app';
 
